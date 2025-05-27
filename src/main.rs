@@ -1,3 +1,19 @@
+enum Cheesesteak<T> {
+    Plain,
+    Topping(T),
+}
+fn main() { 
+  
+let mushroom =  Cheesesteak::Topping("Mushroom");
+let onions = Cheesesteak::Topping("Onions".to_string());
+let topping = "bacon".to_string();
+let bacon = Cheesesteak::Topping(&topping);
+
+let mut plain: Cheesesteak<String> = Cheesesteak::Plain;
+plain = Cheesesteak::Topping("Sausse".to_string());
+
+}
+/*
 #[derive(Debug)] // Class 188
 
 struct TreasureChest<T> {
@@ -7,24 +23,24 @@ struct TreasureChest<T> {
 
 impl TreasureChest<String> {
     fn clean_treasure(&mut self) {
-        self.treasure = self.treasure.trim().to_string();
+        self.treasure = self.treasure.trim().to_string(); // Class 190
     }
 }
 
 impl TreasureChest<[&str; 3]> {
-    fn amount_of_treasure(&self) -> usize {
+    fn amount_of_treasure(&self) -> usize { // Class 190
         self.treasure.len()
     }
 }
 
 impl<T> TreasureChest<T> {
-    fn capital_captain(&self) -> String {
+    fn capital_captain(&self) -> String {  // Class 190
         self.captain.to_uppercase()
     }
 }
 
 
-fn main() { // Class 188
+fn main() { 
     let gold_chest = TreasureChest {
         captain: String::from("Fierbeard"),
         treasure: "Gold",
@@ -46,6 +62,7 @@ fn main() { // Class 188
     println!("{}", special_chest.capital_captain()); // Class 190
     println!("{:?}", special_chest);
 }
+*/
 
 /*
 fn make_tuple<T, U>(first: T, second: U) -> (T, U) { // Class 187
