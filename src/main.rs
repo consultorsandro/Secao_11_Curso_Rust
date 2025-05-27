@@ -1,9 +1,52 @@
-enum Cheesesteak<T> {
+#[derive(Debug)] // Class 193
+
+enum DigitalContent {
+    AudioFile,
+    VideoFile,
+}
+#[derive(Debug)]
+struct ChatMessage<T> {
+    content: T,
+    time: String,
+}
+impl ChatMessage<DigitalContent> {
+    fn consume_entertainment(&self) {
+        println!("Wathing the {:?}", self.content);
+    }
+}
+
+impl<T> ChatMessage<T> {
+    fn retrieve_time(&self) -> String {
+        self.time.clone()
+    }
+}
+
+fn main() {// Class 193
+    let message = ChatMessage {
+        content: "Hi, lol",
+        time: String::from("2025-03-12"),
+    };
+    println!("{}", message.retrieve_time()); 
+
+    let notification = ChatMessage {
+        content: String::from("What's your favorite pizza topping?"),
+        time: String::from("2025-04-12"),
+    };
+    println!("{}", notification.retrieve_time()); 
+
+    let audio = ChatMessage {
+        content: DigitalContent::AudioFile,
+        time: String::from("2025-05-12"),
+    };
+    audio.consume_entertainment();
+}
+/*
+enum Cheesesteak<T> {// Class 191
     Plain,
     Topping(T),
 }
-fn main() { 
-  
+fn main() {
+
 let mushroom =  Cheesesteak::Topping("Mushroom");
 let onions = Cheesesteak::Topping("Onions".to_string());
 let topping = "bacon".to_string();
@@ -13,6 +56,7 @@ let mut plain: Cheesesteak<String> = Cheesesteak::Plain;
 plain = Cheesesteak::Topping("Sausse".to_string());
 
 }
+*/
 /*
 #[derive(Debug)] // Class 188
 
@@ -40,7 +84,7 @@ impl<T> TreasureChest<T> {
 }
 
 
-fn main() { 
+fn main() {
     let gold_chest = TreasureChest {
         captain: String::from("Fierbeard"),
         treasure: "Gold",
