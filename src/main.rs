@@ -1,10 +1,38 @@
+#[derive(Debug)] // Class 188
+
+struct TreasureChest<T> {
+    captain: String,
+    treasure: T,
+}
+
+fn main() { // Class 188
+    let gold_chest = TreasureChest {
+        captain: String::from("Fierbeard"),
+        treasure: "Gold",
+    };
+    println!("{:?}", gold_chest);
+
+    let silver_chest = TreasureChest {
+        captain: String::from("Silverhand"),
+        treasure: String::from("Silver"),
+    };
+    println!("{:?}", silver_chest);
+
+    let special_chest = TreasureChest {
+        captain: String::from("Blackbeard"),
+        treasure: ["Gold", "Silver", "Diamonds"],
+    };
+    println!("{:?}", special_chest);
+}
+
+/*
 fn make_tuple<T, U>(first: T, second: U) -> (T, U) { // Class 187
     (first, second)
 }
 fn main() {
-    make_tuple(5, "Hello");
+    make_tuple(5, "Hello"); // Class 187
     make_tuple(3.14, true);
-}
+*/
 /*
     println!("{}", identity::<i32>(5)); // Class 186
     println!("{}", identity::<f64>(13.94));
