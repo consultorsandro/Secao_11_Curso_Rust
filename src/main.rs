@@ -5,6 +5,25 @@ struct TreasureChest<T> {
     treasure: T,
 }
 
+impl TreasureChest<String> {
+    fn clean_treasure(&mut self) {
+        self.treasure = self.treasure.trim().to_string();
+    }
+}
+
+impl TreasureChest<[&str; 3]> {
+    fn amount_of_treasure(&self) -> usize {
+        self.treasure.len()
+    }
+}
+
+impl<T> TreasureChest<T> {
+    fn capital_captain(&self) -> String {
+        self.captain.to_uppercase()
+    }
+}
+
+
 fn main() { // Class 188
     let gold_chest = TreasureChest {
         captain: String::from("Fierbeard"),
@@ -12,16 +31,19 @@ fn main() { // Class 188
     };
     println!("{:?}", gold_chest);
 
-    let silver_chest = TreasureChest {
+    let mut silver_chest = TreasureChest {
         captain: String::from("Silverhand"),
-        treasure: String::from("Silver"),
+        treasure: String::from("     Silver     "),
     };
+    silver_chest.clean_treasure(); // Class 190
     println!("{:?}", silver_chest);
 
     let special_chest = TreasureChest {
         captain: String::from("Blackbeard"),
         treasure: ["Gold", "Silver", "Diamonds"],
     };
+    println!("{}", special_chest.amount_of_treasure()); // Class 190
+    println!("{}", special_chest.capital_captain()); // Class 190
     println!("{:?}", special_chest);
 }
 
